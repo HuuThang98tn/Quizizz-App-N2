@@ -5,11 +5,10 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     stylesContainer: {
         flex: 1,
-        backgroundColor: colors.colors_milky
     },
     styleBody: {
-        flex: 1,
-        backgroundColor: colors.colors_milky
+        justifyContent: "center",
+        alignItems: "center"
     },
     styleFooter: {
         backgroundColor: colors.colors_milky,

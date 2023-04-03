@@ -23,7 +23,7 @@ const RenderOptions = (props: Props) => {
     return (
         <View>
             {
-                options.map((option: any, index: any) => (
+                options?.map((option: any, index: any) => (
                     <TouchableOpacity
                         onPress={() => validateAnswer(option)}
                         disabled={isOptionsDisabled}

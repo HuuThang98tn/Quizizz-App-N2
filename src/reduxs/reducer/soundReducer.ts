@@ -1,6 +1,5 @@
 import { SET_SOUND, SET_LOADING, ActionProps } from "../types/types";
 const initialState = {
-    isloading: false,
     isSound: true,
 };
 

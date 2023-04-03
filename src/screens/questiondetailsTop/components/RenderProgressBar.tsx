@@ -6,17 +6,19 @@ type Props = {
     progressAnim?: number | any
     currentQuestionIndex?: any
     allQuestions?: any
+    currentNumber?: any
 }
 
 const RenderProgressBar = (props: Props) => {
-    const { progressAnim, currentQuestionIndex, allQuestions } = props
+    const { progressAnim, currentQuestionIndex, allQuestions, currentNumber } = props
+
     return (
 
         <View style={{
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            // marginHorizontal: 10,
+            marginHorizontal: 10,
 
         }}>
             <Text style={{
@@ -24,7 +26,21 @@ const RenderProgressBar = (props: Props) => {
                 color: colors.colors_orange,
                 fontWeight: "700"
             }}
-            >Lesson 01</Text>
+            >{` Lesson ${currentNumber === 1 ? "A" :
+                currentNumber === 2 ? "B" :
+                    currentNumber === 3 ? "C" :
+                        currentNumber === 4 ? "D" :
+                            currentNumber === 5 ? "E" :
+                                currentNumber === 6 ? "F" :
+                                    currentNumber === 7 ? "G" :
+                                        currentNumber === 8 ? "H" :
+                                            currentNumber === 9 ? "I" :
+                                                currentNumber === 10 ? "J" :
+                                                    currentNumber === 11 ? "K" :
+                                                        currentNumber === 12 ? "L" :
+                                                            currentNumber === 13 ? "M" :
+                                                                currentNumber === 14 ? "N" :
+                                                                    currentNumber === 15 ? "O" : null}`}</Text>
             <View style={{
                 width: '60%',
                 height: 16,
@@ -58,7 +74,7 @@ const RenderProgressBar = (props: Props) => {
                     color: colors.colors_black,
                     fontSize: 18,
                     fontWeight: "700"
-                }}> / {allQuestions.length}</Text>
+                }}> / {allQuestions?.length}</Text>
             </View>
         </View>
 

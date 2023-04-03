@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 16,
-        // padding: 24,
+        padding: 24,
         marginHorizontal: 22,
         fontWeight: "600",
         color: colors.colors_darkCyan

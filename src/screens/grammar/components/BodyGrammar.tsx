@@ -4,17 +4,19 @@ import colors from '@theme/colors/colors';
 import { REQUIREIMG } from '@theme/require/RequireImage';
 
 type Props = {
-    onPressStarOne?: () => void;
+    onPressStarOne?: () => void
     onPressStarTwo?: () => void;
     onPressStarThree?: () => void;
 
 }
 
 const BodyGrammar = (props: Props) => {
+    const { onPressStarOne, onPressStarTwo, onPressStarThree } = props;
     return (
         <View style={styles.stylesContainer}>
             <Text style={styles.styleTitle}>JLPT N2</Text>
             <TouchableOpacity
+                onPress={onPressStarOne}
                 style={[styles.stylesButton, { backgroundColor: colors.colors_darkSlateGray }]}
             >
                 <Image
@@ -27,6 +29,7 @@ const BodyGrammar = (props: Props) => {
 
             </TouchableOpacity>
             <TouchableOpacity
+                onPress={onPressStarTwo}
                 style={[styles.stylesButton, { backgroundColor: colors.colors_DarkSeaGreen2 }]}
             >
                 <View style={{ flexDirection: "row", }} >
@@ -44,6 +47,7 @@ const BodyGrammar = (props: Props) => {
                 <Text style={styles.styleTextButton}>語彙</Text>
             </TouchableOpacity>
             <TouchableOpacity
+                onPress={onPressStarThree}
                 style={[styles.stylesButton, { backgroundColor: colors.colors_khaki }]}
             >
                 <View style={{ flexDirection: "row", }} >
@@ -81,10 +85,9 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     stylesContainer: {
-        flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: -32
+        marginTop: 48
     },
     stylesButton: {
         width: 250,

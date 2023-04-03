@@ -1,9 +1,8 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Animated } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, TouchableOpacity, Animated } from 'react-native'
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector, useDispatch } from 'react-redux';
-import { SCREEN_WIDTHSCREEN } from '@theme/size/sizeScree';
-import { useNavigation } from '@react-navigation/native';
+import { SCREEN_HEIGHTSCREEN, SCREEN_WIDTHSCREEN } from '@theme/size/sizeScree';
 import { slides } from '@data/DataFirst';
 import { setIsLoading } from 'src/reduxs/actions/loadingAction';
 
@@ -12,10 +11,15 @@ type Props = {}
 
 const Slide = ({ item }: any) => {
     return (
-        <View style={{ alignContent: 'center' }}>
-            <Image source={item.image} style={styles.image} />
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.subtitle}>{item.subtitle}</Text>
+        <View style={{
+            alignContent: 'center',
+            flex: 1
+        }}>
+            <ImageBackground
+                source={item.image}
+                style={styles.image}
+                resizeMode='cover'
+            />
         </View>
     );
 };
@@ -67,7 +71,7 @@ const SplashScreen = (props: Props) => {
                     <Text
                         style={[
                             styles.textDefault,
-                            { color: "#555555", fontWeight: '400' },
+                            { color: "#fff", fontWeight: '900' },
                         ]}>
                         {currentIndex === slides.length - 1 ? null : 'Bỏ qua'}
                     </Text>
@@ -81,9 +85,9 @@ const SplashScreen = (props: Props) => {
                         ];
 
                         const colorOutputRange = [
-                            "#4baf9f",
-                            "#288d94",
-                            "#4baf9f",
+                            "#f66c6c",
+                            "#ff5858",
+                            "#f66c6c",
                         ];
 
                         const color = animatedValue.interpolate({
@@ -121,9 +125,9 @@ const SplashScreen = (props: Props) => {
                                 color:
                                     currentIndex === slides.length - 1
                                         ? "#ff5858"
-                                        : "black",
+                                        : "#fff",
 
-                                fontWeight: currentIndex === slides.length - 1 ? '700' : '400',
+                                fontWeight: currentIndex === slides.length - 1 ? '700' : '700',
                             },
                         ]}>
                         {currentIndex === slides.length - 1 ? 'Bắt đầu' : 'Tiếp'}
@@ -134,7 +138,7 @@ const SplashScreen = (props: Props) => {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <Animated.FlatList
                 data={slides}
                 horizontal
@@ -154,7 +158,7 @@ const SplashScreen = (props: Props) => {
             />
             <Footer />
 
-        </SafeAreaView>
+        </View>
     );
 }
 
@@ -174,10 +178,10 @@ const styles = StyleSheet.create({
         fontFamily: 'OpenSans-Bold',
     },
     image: {
-        height: '60%',
+        height: SCREEN_HEIGHTSCREEN,
         width: SCREEN_WIDTHSCREEN,
-        resizeMode: 'contain',
-        marginTop: 50
+        // resizeMode: 'contain',
+        // marginTop: 50
     },
     subtitle: {
         // color: ArrayColors._color_un_active,
@@ -189,8 +193,9 @@ const styles = StyleSheet.create({
         fontFamily: 'OpenSans-Regular',
     },
     textDefault: {
-        fontSize: 18,
+        fontSize: 22,
         fontFamily: 'OpenSans-Regular',
+        fontWeight: "700"
     },
     indicator: {
         height: 10,
@@ -201,6 +206,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 22,
         justifyContent: 'space-around',
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+
     },
     contentIndicator: {
         flex: 1,

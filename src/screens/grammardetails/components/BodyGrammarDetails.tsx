@@ -1,20 +1,23 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
 import React from 'react'
-import dataVocabularyScreen from '@data/DataVocabularyScreen'
+import DataAlphabet from '@data/DataAlphabet'
 import { SCREEN_HEIGHTSCREEN, SCREEN_WIDTHSCREEN } from '@theme/size/sizeScree'
 import colors from '@theme/colors/colors'
 import { useNavigation } from '@react-navigation/native';
+import DataVocabulary from '@data/DataVocabulary'
+import DataGrammar from '@data/DataGrammar'
 
 type Props = {
     onPressQuestionDetails?: ((item: any) => void) | any | undefined;
+    valueParams?: any | undefined | null
 }
 
-const BodyVocabulary = (props: Props) => {
-    // const { onPressQuestionDetails } = props
+const BodyGrammarDetails = (props: Props) => {
+    const { valueParams } = props
     const navigation: any = useNavigation();
 
     const onPressQuestionDetails = (item: any) => {
-        navigation.navigate("QuestionDetailsVocabularyBottom", item)
+        navigation.navigate("QuestionDetailsVocabularyTop", item)
 
     }
     const renderItem = (item: {} | any, index: number) => {
@@ -41,8 +44,8 @@ const BodyVocabulary = (props: Props) => {
                 }}
                 key={item.id}
                 style={[styles.styleItemContainer, { backgroundColor: backgroundColor }]}>
-                <Text style={styles.styleLesson}>{item.title}</Text>
-                <Text style={styles.styleNumber}>{item.number}</Text>
+                {/* <Text style={styles.styleLesson}>{item.title}</Text> */}
+                <Text style={styles.styleNumber}>{item.option}</Text>
             </TouchableOpacity>
 
         )
@@ -52,7 +55,10 @@ const BodyVocabulary = (props: Props) => {
 
         <View style={styles.styleContainer}>
             <FlatList
-                data={dataVocabularyScreen}
+                data={valueParams === "alphabet" ? DataAlphabet :
+                    valueParams === "vocabulary" ? DataVocabulary :
+                        valueParams === "grammar" ? DataGrammar : null
+                }
                 renderItem={({ item, index }: any) => renderItem(item, index)}
                 keyExtractor={(item, index) => index.toString()}
                 numColumns={3}
@@ -63,7 +69,7 @@ const BodyVocabulary = (props: Props) => {
     )
 }
 
-export default BodyVocabulary
+export default BodyGrammarDetails
 
 const styles = StyleSheet.create({
     styleContainer: {
@@ -89,7 +95,7 @@ const styles = StyleSheet.create({
         fontWeight: "700"
     },
     styleNumber: {
-        fontSize: 24,
+        fontSize: 32,
         color: colors.colors_milky,
         fontWeight: "700"
     }

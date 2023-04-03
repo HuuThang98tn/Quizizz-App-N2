@@ -17,8 +17,6 @@ const HomeScreen = (props: Props) => {
     const [sound, setSounds] = useState<boolean>(true);
     const navigation: any = useNavigation();
     const dispatch = useDispatch();
-
-
     const onPressGrammar = () => navigation.navigate("GrammarScreen")
     const onPressVocabulary = () => navigation.navigate("VocabularyScreen")
 
