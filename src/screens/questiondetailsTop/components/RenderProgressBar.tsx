@@ -18,7 +18,7 @@ const RenderProgressBar = (props: Props) => {
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            marginHorizontal: 10,
+            paddingHorizontal: 20,
 
         }}>
             <Text style={{
@@ -42,7 +42,7 @@ const RenderProgressBar = (props: Props) => {
                                                                 currentNumber === 14 ? "N" :
                                                                     currentNumber === 15 ? "O" : null}`}</Text>
             <View style={{
-                width: '60%',
+                flex: 1,
                 height: 16,
                 borderRadius: 16,
                 backgroundColor: colors.colors_Aquamarine1,
@@ -57,7 +57,7 @@ const RenderProgressBar = (props: Props) => {
                     width: progressAnim
                 }]}>
 
-                </Animated.View>
+                </Animated.View>    
 
             </View>
             {/* Question Counter */}

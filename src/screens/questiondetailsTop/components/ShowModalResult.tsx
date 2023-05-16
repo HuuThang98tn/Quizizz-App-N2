@@ -31,28 +31,18 @@ const ShowModalResult = (props: Props) => {
                     source={REQUIREIMG.ic_hs_25}
                     resizeMode='cover'
                     style={styles.stylesViewImageBackground}>
-                    <ImageBackground
-                        source={REQUIREIMG.ic_hs_16}
-                        resizeMode='cover'
-                        imageStyle={{ borderRadius: 6 }}
+                    <View
+                        // source={REQUIREIMG.ic_hs_16}
+                        // resizeMode='cover'
+                        // imageStyle={{ borderRadius: 6 }}
                         style={styles.stylesViewDialogResult}>
-                        {/* <Image
-                            source={score > (allQuestions?.length / 2) ? REQUIREIMG.ic_happy : REQUIREIMG.ic_sad}
-                            style={{ width: 46, height: 46 }}
-                            resizeMode="contain"
-                        /> */}
                         <View style={styles.stylesViewTextResult}>
                             <Text style={{
                                 fontSize: 30,
                                 fontWeight: "700",
-                                color: colors.colors_orange
+                                color: colors.colors_liner_gray_white
                             }}>練習を終了しますか？</Text>
-                            {/* <Text style={{
-                                fontSize: 30,
-                                color: colors.colors_milky,
-                                fontWeight: "700",
 
-                            }}> / {allQuestions?.length}</Text> */}
                         </View>
 
                         {/* Option Quiz button */}
@@ -66,7 +56,7 @@ const ShowModalResult = (props: Props) => {
                                 />
                             )}
                         </View>
-                    </ImageBackground>
+                    </View>
                 </ImageBackground>
             </View>
         </Modal>
@@ -89,11 +79,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     stylesViewDialogResult: {
-        backgroundColor: colors.colors_milky,
+        backgroundColor: colors.colors_turquoise,
         width: SCREEN_WIDTHSCREEN - 20,
         paddingVertical: 20,
         marginHorizontal: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 8
     },
     stylesViewTextResult: {
         flexDirection: 'row',

@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground } from 'react-native'
 import React from 'react'
 import colors from '@theme/colors/colors';
 import { REQUIREIMG } from '@theme/require/RequireImage';
+import { SCREEN_WIDTHWINDOW } from '@theme/size/sizeScree';
 
 type Props = {
     onPressStarOne?: () => void
@@ -17,57 +18,40 @@ const BodyGrammar = (props: Props) => {
             <Text style={styles.styleTitle}>JLPT N2</Text>
             <TouchableOpacity
                 onPress={onPressStarOne}
-                style={[styles.stylesButton, { backgroundColor: colors.colors_darkSlateGray }]}
+                style={[styles.stylesButton, {}]}
             >
-                <Image
-                    source={REQUIREIMG.img_star}
+                <ImageBackground
+                    source={REQUIREIMG._1sao_button}
                     style={styles.styleImg}
                     resizeMode='contain'
-                />
-
-                <Text style={styles.styleTextButton}>文字</Text>
+                >
+                    <Text style={styles.styleTextButton}>文字</Text>
+                </ImageBackground>
 
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={onPressStarTwo}
-                style={[styles.stylesButton, { backgroundColor: colors.colors_DarkSeaGreen2 }]}
+                style={[styles.stylesButton, {}]}
             >
-                <View style={{ flexDirection: "row", }} >
-                    <Image
-                        source={REQUIREIMG.img_star}
-                        style={styles.styleImg}
-                        resizeMode='contain'
-                    />
-                    <Image
-                        source={REQUIREIMG.img_star}
-                        style={styles.styleImg}
-                        resizeMode='contain'
-                    />
-                </View>
-                <Text style={styles.styleTextButton}>語彙</Text>
+                <ImageBackground
+                    source={REQUIREIMG._2sao_button}
+                    style={styles.styleImg}
+                    resizeMode='contain'
+                >
+                    <Text style={styles.styleTextButton}>語彙</Text>
+
+                </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={onPressStarThree}
-                style={[styles.stylesButton, { backgroundColor: colors.colors_khaki }]}
+                style={[styles.stylesButton, {}]}
             >
-                <View style={{ flexDirection: "row", }} >
-                    <Image
-                        source={REQUIREIMG.img_star}
-                        style={styles.styleImg}
-                        resizeMode='contain'
-                    />
-                    <Image
-                        source={REQUIREIMG.img_star}
-                        style={styles.styleImg}
-                        resizeMode='contain'
-                    />
-                    <Image
-                        source={REQUIREIMG.img_star}
-                        style={styles.styleImg}
-                        resizeMode='contain'
-                    />
-                </View>
-                <Text style={styles.styleTextButton}>文法</Text>
+                <ImageBackground
+                    source={REQUIREIMG._3sao_button}
+                    style={styles.styleImg}
+                    resizeMode='contain' >
+                    <Text style={styles.styleTextButton}>文法</Text>
+                </ImageBackground>
             </TouchableOpacity>
 
 
@@ -81,7 +65,7 @@ const styles = StyleSheet.create({
     styleTitle: {
         fontWeight: "900",
         fontSize: 56,
-        color: colors.colors_darkCyan,
+        color: colors.colors_turquoise,
         marginBottom: 20
     },
     stylesContainer: {
@@ -90,12 +74,6 @@ const styles = StyleSheet.create({
         marginTop: 48
     },
     stylesButton: {
-        width: 250,
-        height: 120,
-        marginVertical: 12,
-        borderRadius: 16,
-        justifyContent: 'center',
-        alignItems: "center"
     },
     styleTextButton: {
         fontSize: 36,
@@ -104,8 +82,10 @@ const styles = StyleSheet.create({
         lineHeight: 68
     },
     styleImg: {
-        width: 32,
-        height: 32,
-        marginHorizontal: 3
+        marginVertical: 12,
+        width: SCREEN_WIDTHWINDOW / 1.5,
+        height: 130,
+        justifyContent: 'center',
+        alignItems: "center"
     }
 })

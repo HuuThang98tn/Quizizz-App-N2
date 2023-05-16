@@ -23,10 +23,9 @@ export const styles = StyleSheet.create({
         left: 0
     },
     titleText: {
+        paddingHorizontal: 12,
         fontSize: 16,
-        paddingLeft: 24,
-        marginHorizontal: 22,
-        fontWeight: "600",
-        color: colors.colors_darkCyan
+        fontWeight: "700",
+        color: colors.colors_turquoise
     }
 })

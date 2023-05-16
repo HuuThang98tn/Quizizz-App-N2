@@ -8,7 +8,7 @@ const TitleHome = (props: Props) => {
     return (
         <View style={styles.styleContainer}>
             <Text style={styles.styleText_H1}>JLPT N2</Text>
-            <Text style={styles.styleText_H4}>練習 テスト</Text>
+            {/* <Text style={styles.styleText_H4}>練習 テスト</Text> */}
         </View>
     )
 }
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         marginVertical: 3
     },
     styleText_H4: {
-        fontWeight: "500",
+        fontWeight: "700",
         fontSize: 48,
         color: colors.colors_DarkSeaGreen2,
         textAlign: "center",

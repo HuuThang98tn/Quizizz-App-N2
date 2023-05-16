@@ -18,11 +18,13 @@ const ButtonHome = (props: Props) => {
                     onPress={onPressGrammar}
                 >
                     <ImageBackground
-                        source={REQUIREIMG.img_hs_03}
-                        resizeMode='contain'
-                        style={styles.styleImg}>
+                        source={REQUIREIMG.button_top}
+                        style={styles.styleButon_1}>
                         <Text style={styles.styleTextTitle}>
                             練習
+                        </Text>
+                        <Text style={styles.styleTextTitleDt}>
+                            文字・語彙・文法の練習問題
                         </Text>
                     </ImageBackground>
                 </TouchableOpacity>
@@ -30,13 +32,16 @@ const ButtonHome = (props: Props) => {
                 <TouchableOpacity
                     onPress={onPressVocabulary}
                 >
-
                     <ImageBackground
-                        source={REQUIREIMG.img_hs_02}
-                        resizeMode='contain'
-                        style={styles.styleImg}>
+                        source={REQUIREIMG.button_bot}
+
+                        style={styles.styleButon_2}>
                         <Text style={styles.styleTextTitle}>
                             テスト
+                        </Text>
+                        <Text style={styles.styleTextTitleDt}>
+                            制限時間内に全ての問題に
+                            答えよう
                         </Text>
                     </ImageBackground>
                 </TouchableOpacity>
@@ -58,15 +63,36 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: "center",
     },
-    styleImg: {
-        width: 220,
+    styleButon_1: {
+        width: SCREEN_WIDTHWINDOW / 1.5,
         height: 150,
         marginVertical: 24,
-        justifyContent: "center"
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#fbe097",
+        borderRadius: 8,
+
+
+    },
+    styleButon_2: {
+        width: SCREEN_WIDTHWINDOW / 1.5,
+        height: 150,
+        marginVertical: 24,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#a8f7e5",
+        borderRadius: 8
     },
     styleTextTitle: {
         textAlign: "center",
-        fontSize: 48,
+        fontSize: 42,
         color: colors.colors_black
+    },
+    styleTextTitleDt: {
+        textAlign: "center",
+        fontSize: 22,
+        color: colors.colors_black,
+        padding: 12,
+
     }
 })

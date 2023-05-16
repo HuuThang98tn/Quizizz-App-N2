@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     titleText: {
         fontSize: 56,
         padding: 24,
-        fontWeight: "600",
-        color: colors.colors_darkCyan
+        fontWeight: "700",
+        color: colors.colors_turquoise
     }
 })

@@ -25,6 +25,7 @@ const QuestionDetailsVocabularyTop = ({ props, route }: any) => {
                         idQuestion={idQuestion}
                     />
                 </View>
+
             </ImageBackground>
         </View>
     );

@@ -41,7 +41,7 @@ const SplashScreen = (props: Props) => {
         if (currentIndex < slides.length - 1) {
             silderRef.current.scrollToIndex({ index: currentIndex + 1 });
         } else {
-            dispatch(setIsLoading(false));
+            dispatch(setIsLoading(true));
             // navigate(NameScreen.HOME);
         }
     };
@@ -73,7 +73,7 @@ const SplashScreen = (props: Props) => {
                             styles.textDefault,
                             { color: "#fff", fontWeight: '900' },
                         ]}>
-                        {currentIndex === slides.length - 1 ? null : 'Bỏ qua'}
+                        {currentIndex === slides.length - 1 ? null : '無視'}
                     </Text>
                 </TouchableOpacity>
                 <View style={styles.contentIndicator}>
@@ -85,9 +85,9 @@ const SplashScreen = (props: Props) => {
                         ];
 
                         const colorOutputRange = [
-                            "#f66c6c",
-                            "#ff5858",
-                            "#f66c6c",
+                            "#727070",
+                            "#000",
+                            "#727070",
                         ];
 
                         const color = animatedValue.interpolate({
@@ -124,13 +124,13 @@ const SplashScreen = (props: Props) => {
                             {
                                 color:
                                     currentIndex === slides.length - 1
-                                        ? "#ff5858"
+                                        ? "#000"
                                         : "#fff",
 
                                 fontWeight: currentIndex === slides.length - 1 ? '700' : '700',
                             },
                         ]}>
-                        {currentIndex === slides.length - 1 ? 'Bắt đầu' : 'Tiếp'}
+                        {currentIndex === slides.length - 1 ? 'スタート' : '次へ'}
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -178,6 +178,7 @@ const styles = StyleSheet.create({
         fontFamily: 'OpenSans-Bold',
     },
     image: {
+        // flex: 1,
         height: SCREEN_HEIGHTSCREEN,
         width: SCREEN_WIDTHSCREEN,
         // resizeMode: 'contain',
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 24,
         textAlign: 'center',
-        fontWeight: '400',
+        fontWeight: '700',
         marginTop: 14,
         fontFamily: 'OpenSans-Regular',
     },

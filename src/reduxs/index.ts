@@ -10,7 +10,7 @@ const initialState = {};
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ["isLoadingReducer"], //! không lưu 
+    blacklist: [], //! không lưu 
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

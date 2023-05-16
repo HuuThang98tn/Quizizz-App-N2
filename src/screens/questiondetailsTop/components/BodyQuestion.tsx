@@ -1,5 +1,5 @@
-import { View, Animated, Text } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import { View, Animated, Text, Platform, ScrollView } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
 import { data_1, data_2 } from '@data/QuizData';
 import RenderProgressBar from './RenderProgressBar';
 import RenderQuestion from './RenderQuestion';
@@ -8,12 +8,13 @@ import RenderNextButton from './RenderNextButton';
 import ShowModalResult from './ShowModalResult';
 import Sound from 'react-native-sound';
 import { styles } from '../styleqs';
-import { STATUS_BAR_HEIGHT } from '@theme/size/sizeScree';
+import { SCREEN_WIDTHSCREEN, STATUS_BAR_HEIGHT } from '@theme/size/sizeScree';
 import FooterAppHeader from '@components/footer/FooterAppHeader';
-import { ListQuestionA, ListQuestionB, ListQuestionC } from '@data/alphabet/ListDataAlphabet';
+import { ListQuestionA, ListQuestionB, ListQuestionC, ListQuestionD, ListQuestionE, ListQuestionF, ListQuestionG, ListQuestionH, ListQuestionI, ListQuestionJ, ListQuestionK, ListQuestionL, ListQuestionM, ListQuestionN, ListQuestionO } from '@data/alphabet/ListDataAlphabet';
 import { ListDataVocabularyA, ListDataVocabularyB, ListDataVocabularyC, ListDataVocabularyD, ListDataVocabularyE, ListDataVocabularyF, ListDataVocabularyG } from '@data/vocabulary/ListDataVocabulary';
 import { ListDataGrammarA, ListDataGrammarB, ListDataGrammarC, ListDataGrammarD, ListDataGrammarE, ListDataGrammarF, ListDataGrammarG } from '@data/grammar/ListDataGrammar';
 import { useSelector } from 'react-redux';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
 type Props = {
     navigation?: any
@@ -66,23 +67,61 @@ const BodyQuestion = (props: Props) => {
     const [showScoreModal, setShowScoreModal] = useState(false);
     const [progress] = useState(new Animated.Value(0));
     const [checkNumberQuestion, setCheckNumberQuestion] = useState<boolean | null>(true);
+    const scrollViewRef = useRef<any>(null);
     useEffect(() => {
         if (numberScreens === 1) {
-            setAllQuestions(currentNumber === 1 ? ListQuestionA :
-                currentNumber === 2 ? ListQuestionB :
-                    currentNumber === 3 ? ListQuestionC :
-                        currentNumber === 4 ? ListQuestionA :
-                            currentNumber === 5 ? ListQuestionA :
-                                currentNumber === 6 ? ListQuestionA :
-                                    currentNumber === 7 ? ListQuestionA :
-                                        currentNumber === 8 ? ListQuestionA :
-                                            currentNumber === 9 ? ListQuestionA :
-                                                currentNumber === 10 ? ListQuestionA :
-                                                    currentNumber === 11 ? ListQuestionA :
-                                                        currentNumber === 12 ? ListQuestionA :
-                                                            currentNumber === 13 ? ListQuestionA :
-                                                                currentNumber === 14 ? ListQuestionA :
-                                                                    currentNumber === 15 ? ListQuestionA : null)
+            switch (currentNumber) {
+                case 0:
+                    setAllQuestions([])
+                    break;
+                case 1:
+                    setAllQuestions(ListQuestionA)
+                    break;
+                case 2:
+                    setAllQuestions(ListQuestionB)
+                    break;
+                case 3:
+                    setAllQuestions(ListQuestionC)
+                    break;
+                case 4:
+                    setAllQuestions(ListQuestionD)
+                    break;
+                case 5:
+                    setAllQuestions(ListQuestionE)
+                    break;
+                case 6:
+                    setAllQuestions(ListQuestionF)
+                    break;
+                case 7:
+                    setAllQuestions(ListQuestionG)
+                    break;
+                case 8:
+                    setAllQuestions(ListQuestionH)
+                    break;
+                case 9:
+                    setAllQuestions(ListQuestionI)
+                    break;
+                case 10:
+                    setAllQuestions(ListQuestionJ)
+                    break;
+                case 11:
+                    setAllQuestions(ListQuestionK)
+                    break;
+                case 12:
+                    setAllQuestions(ListQuestionL)
+                    break;
+                case 13:
+                    setAllQuestions(ListQuestionM)
+                    break;
+                case 14:
+                    setAllQuestions(ListQuestionN)
+                    break;
+                case 15:
+                    setAllQuestions(ListQuestionO)
+                    break;
+                default:
+                    break;
+            }
         } else if (numberScreens === 2) {
             switch (currentNumber) {
                 case 0:
@@ -143,10 +182,15 @@ const BodyQuestion = (props: Props) => {
             }
         }
 
+        // soundMp3Err.release();
+        // soundMp3Success.release();
+        // soundMp3.release();
+
     }, [currentNumber])
 
 
-
+    const adUnitId = __DEV__ ? TestIds.BANNER : Platform.OS === "android"
+        ? "ca-app-pub-4654653142461000/7616413717" : "ca-app-pub-4654653142461000/2943026751";
     const progressAnim = progress.interpolate({
         inputRange: [0, allQuestions?.length],
         outputRange: ['0%', '100%'],
@@ -156,22 +200,32 @@ const BodyQuestion = (props: Props) => {
     }
     const onPressGoHome = () => props.navigation.navigate("HomeScreen" as never);
     const handleNext = () => {
-        if (isSound.isSound) soundMp3.play();
+        scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true });
 
+        if (isSound.isSound) {
+            // soundMp3.play();
+            soundMp3.play(({ success, err }: any) => {
+                if (!success) {
+                    console.log('Failed to play the sound', err);
+                }
+            });
+        }
         if (currentQuestionIndex == allQuestions.length - 1) {
             // Last Question
             // Show Score Modal
             setShowScoreModal(true);
             if (numberScreens === 1) {
                 if (currentNumber >= 15) {
-                    setCheckNumberQuestion(false)
+                    setCheckNumberQuestion(true)
+                    // props.navigation.navigate("HomeScreen" as never);
 
                 } else {
                     setCheckNumberQuestion(true)
                 }
             } else if (numberScreens === 2 || numberScreens === 3) {
                 if (currentNumber >= 7) {
-                    setCheckNumberQuestion(false)
+                    setCheckNumberQuestion(true)
+                    // props.navigation.navigate("HomeScreen" as never);
 
                 } else {
                     setCheckNumberQuestion(true)
@@ -190,54 +244,14 @@ const BodyQuestion = (props: Props) => {
             duration: 1000,
             useNativeDriver: false,
         }).start();
+
+        // return soundMp3.release();
     };
     const restartQuiz = () => {
-        // setCurrentNumber(currentNumber)
-        // setShowScoreModal(false);
-        // setCurrentQuestionIndex(0);
-        // setScore(0);
-        // setCurrentOptionSelected(null);
-        // setCorrectOption(null);
-        // setIsOptionsDisabled(false);
-        // setShowNextButton(false);
-        // Animated.timing(progress, {
-        //     toValue: 0,
-        //     duration: 1000,
-        //     useNativeDriver: false,
-        // }).start();
-        props.navigation.navigate("GrammarScreen" as never);
-
-    };
-    // useEffect(() => {
-    //     // setTimeout(function () {
-    //     // soundMp3.release();
-    //     // soundMp3Success.release();
-    //     // soundMp3Err.release();
-    //     // }, 1000);
-    // }, [currentOptionSelected]);
-
-    const validateAnswer = (selectedOption: any) => {
-        let correct_option: any = allQuestions[currentQuestionIndex].correct_option;
-        setCurrentOptionSelected(selectedOption);
-        setCorrectOption(correct_option);
-        setIsOptionsDisabled(true);
-        if (selectedOption === correct_option) {
-            // Set Score
-            setScore(score + 1);
-            if (isSound.isSound) soundMp3Success.play()
-        } else {
-            if (isSound.isSound) soundMp3Err.play();
-        }
-        // Show Next Button
-        setShowNextButton(true);
-    };
-    const nextQuiz = () => {
-        setCurrentNumber(currentNumber + 1)
+        setCurrentNumber(currentNumber)
         setShowScoreModal(false);
-
         setCurrentQuestionIndex(0);
         setScore(0);
-
         setCurrentOptionSelected(null);
         setCorrectOption(null);
         setIsOptionsDisabled(false);
@@ -247,6 +261,102 @@ const BodyQuestion = (props: Props) => {
             duration: 1000,
             useNativeDriver: false,
         }).start();
+        // props.navigation.navigate("GrammarScreen" as never);
+
+    };
+    const validateAnswer = async (selectedOption: any) => {
+        let correct_option: any = allQuestions[currentQuestionIndex].correct_option;
+        setCurrentOptionSelected(selectedOption);
+        setCorrectOption(correct_option);
+        setIsOptionsDisabled(true);
+        if (selectedOption === correct_option) {
+            // Set Score
+            setScore(score + 1);
+            if (isSound.isSound) {
+                await soundMp3Success.play(({ success, err }: any) => {
+                    if (!success) {
+                        console.log('Failed to play the sound', err);
+                        setShowNextButton(true);
+
+                    } else {
+                        console.log(err);
+                        setShowNextButton(true);
+                    }
+                });
+            } else {
+                setShowNextButton(true);
+            }
+        } else {
+            if (isSound.isSound) {
+                // soundMp3Err.play();
+                await soundMp3Err.play(({ success, err }: any) => {
+                    if (!success) {
+                        console.log('Failed to play the sound', err);
+                        setShowNextButton(true);
+
+                    } else {
+                        console.log(success);
+                        setShowNextButton(true);
+
+
+                    }
+                });
+            } else {
+                setShowNextButton(true);
+            }
+        }
+        // Show Next Button
+
+
+        // soundMp3Err.reset();
+        // soundMp3Success.reset();
+        // soundMp3.reset();
+
+    };
+    const nextQuiz = () => {
+        setCurrentNumber(currentNumber + 1)
+        if (numberScreens === 1) {
+            if (currentNumber >= 15) {
+                props.navigation.navigate("HomeScreen" as never);
+
+            } else {
+                setShowScoreModal(false);
+                setCurrentQuestionIndex(0);
+                setScore(0);
+
+                setCurrentOptionSelected(null);
+                setCorrectOption(null);
+                setIsOptionsDisabled(false);
+                setShowNextButton(false);
+                Animated.timing(progress, {
+                    toValue: 0,
+                    duration: 1000,
+                    useNativeDriver: false,
+                }).start();
+            }
+        } else if (numberScreens === 2 || numberScreens === 3) {
+            if (currentNumber >= 7) {
+                props.navigation.navigate("HomeScreen" as never);
+
+            } else {
+                setShowScoreModal(false);
+                setCurrentQuestionIndex(0);
+                setScore(0);
+
+                setCurrentOptionSelected(null);
+                setCorrectOption(null);
+                setIsOptionsDisabled(false);
+                setShowNextButton(false);
+                Animated.timing(progress, {
+                    toValue: 0,
+                    duration: 1000,
+                    useNativeDriver: false,
+                }).start(); (true)
+            }
+        }
+
+
+
     }
 
     return (
@@ -256,49 +366,75 @@ const BodyQuestion = (props: Props) => {
                 paddingHorizontal: 10,
             }}>
             {/* Introduction */}
-            <View
-                style={{
-                    flex: 2,
-                    marginTop: STATUS_BAR_HEIGHT + 10,
-                    width: '100%',
-                }}>
-                <View style={{ marginLeft: 80 }}>
-                    <Text style={styles.titleText} numberOfLines={3}>
-                        {allQuestions?.[currentQuestionIndex]?.introduction}
-                    </Text>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                ref={scrollViewRef}
+
+            >
+                <View
+                    style={{
+                        flex: 3,
+                        marginTop: STATUS_BAR_HEIGHT + 16,
+                        width: '100%',
+
+                    }}>
+                    <View style={{ flexDirection: "row" }}>
+                        <View style={{ width: "40%", }}>
+
+                        </View>
+                        <View style={{ width: "60%" }}>
+                            <Text style={styles.titleText} numberOfLines={4}>
+                                {allQuestions?.[currentQuestionIndex]?.introduction}
+                            </Text>
+                        </View>
+                    </View>
                 </View>
-            </View>
-            <View style={{ flex: 12 }}>
-                <RenderProgressBar
-                    progressAnim={progressAnim}
-                    currentQuestionIndex={currentQuestionIndex}
-                    allQuestions={allQuestions}
-                    currentNumber={currentNumber}
-                />
-                {/* Question */}
-                <RenderQuestion question={allQuestions?.[currentQuestionIndex]?.question} />
-                {/* Options */}
-                <RenderOptions
-                    options={allQuestions?.[currentQuestionIndex]?.options}
-                    validateAnswer={(option: any) => validateAnswer(option)}
-                    isOptionsDisabled={isOptionsDisabled}
-                    correctOption={correctOption}
-                    currentOptionSelected={currentOptionSelected}
-                />
+                <View style={{ flex: 12, paddingBottom: 120, paddingTop: 52 }}>
+                    <RenderProgressBar
+                        progressAnim={progressAnim}
+                        currentQuestionIndex={currentQuestionIndex}
+                        allQuestions={allQuestions}
+                        currentNumber={currentNumber}
+                    />
+                    {/* Question */}
+                    <RenderQuestion question={allQuestions?.[currentQuestionIndex]?.question} />
+                    {/* Options */}
+                    <RenderOptions
+                        options={allQuestions?.[currentQuestionIndex]?.options}
+                        validateAnswer={(option: any) => validateAnswer(option)}
+                        isOptionsDisabled={isOptionsDisabled}
+                        correctOption={correctOption}
+                        currentOptionSelected={currentOptionSelected}
+                    />
 
-                {/* Score Modal */}
-                <ShowModalResult
-                    showScoreModal={showScoreModal} //showScoreModal
-                    score={score}
-                    allQuestions={allQuestions}
-                    restartQuiz={restartQuiz}
-                    nextQuiz={nextQuiz}
-                    checkNumberQuestion={checkNumberQuestion}
-
-                />
-            </View>
+                    {/* Score Modal */}
+                    <ShowModalResult
+                        showScoreModal={showScoreModal} //showScoreModal
+                        score={score}
+                        allQuestions={allQuestions}
+                        restartQuiz={restartQuiz}
+                        nextQuiz={nextQuiz}
+                        checkNumberQuestion={checkNumberQuestion}
+                    />
+                </View>
+            </ScrollView>
             {/* ProgressBar */}
-
+            <View style={{
+                width: "100%",
+                height: 52,
+                position: 'absolute',
+                bottom: 60,
+                left: 0,
+                right: 0
+            }}>
+                <BannerAd
+                    unitId={adUnitId}
+                    size={BannerAdSize.FULL_BANNER}
+                    requestOptions={{
+                        requestNonPersonalizedAdsOnly: true,
+                    }}
+                />
+            </View>
             <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
                 <FooterAppHeader
                     isVisible={showNextButton}

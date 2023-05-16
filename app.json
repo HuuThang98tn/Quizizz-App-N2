@@ -1,4 +1,9 @@
 {
-  "name": "QuizizzAppN2",
-  "displayName": "QuizizzAppN2"
+    "name": "QuizizzAppN2",
+    "displayName": "QuizizzAppN2",
+    "react-native-google-mobile-ads": {
+        "android_app_id": "ca-app-pub-4654653142461000~9692160134",
+        "ios_app_id": "ca-app-pub-4654653142461000~2684006454",
+        "delay_app_measurement_init": true
+    }
 }

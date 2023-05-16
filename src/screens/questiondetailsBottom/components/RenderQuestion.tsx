@@ -27,7 +27,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 24,
         borderColor: colors.colors_orange,
-        borderRadius: 8
+        borderRadius: 8,
+        backgroundColor: colors.colors_milky
+
     },
     styleTextQuestion: {
         color: colors.colors_black,

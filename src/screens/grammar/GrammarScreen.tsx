@@ -1,4 +1,4 @@
-import { StyleSheet, ImageBackground, View } from 'react-native'
+import { StyleSheet, ImageBackground, View, Platform, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
@@ -7,12 +7,15 @@ import BodyGrammar from './components/BodyGrammar';
 import { useNavigation } from '@react-navigation/native'
 import { REQUIREIMG } from '@theme/require/RequireImage';
 import { SCREEN_HEIGHTSCREEN, SCREEN_WIDTHSCREEN } from '@theme/size/sizeScree';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
 type Props = {}
 
 const GrammarScreen = (props: Props) => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const navigation: any = useNavigation()
+    const adUnitId = __DEV__ ? TestIds.BANNER : Platform.OS === "android"
+        ? "ca-app-pub-4654653142461000/7616413717" : "ca-app-pub-4654653142461000/2943026751";
 
     const onPressGoBack = () => {
         navigation.goBack();
@@ -25,10 +28,6 @@ const GrammarScreen = (props: Props) => {
     const onPressStarScreen = (value: string) => {
         navigation.push("GrammarDetailsScreen", value)
     }
-
-
-
-
     return (
         <SafeAreaView style={styles.stylesContainer}>
             <ImageBackground
@@ -40,13 +39,26 @@ const GrammarScreen = (props: Props) => {
                 }}
                 resizeMode='cover'
             >
-                <View style={styles.styleBody}>
-                    <BodyGrammar
-                        onPressStarOne={() => onPressStarScreen("alphabet")}
-                        onPressStarTwo={() => onPressStarScreen("vocabulary")}
-                        onPressStarThree={() => onPressStarScreen("grammar")}
+
+                <View style={{ height: 58, }}>
+                    <BannerAd
+                        unitId={adUnitId}
+                        size={BannerAdSize.FULL_BANNER}
+                        requestOptions={{
+                            requestNonPersonalizedAdsOnly: true,
+                        }}
                     />
                 </View>
+                <ScrollView style={{ flex: 1, }}>
+                    <View style={styles.styleBody}>
+                        <BodyGrammar
+                            onPressStarOne={() => onPressStarScreen("alphabet")}
+                            onPressStarTwo={() => onPressStarScreen("vocabulary")}
+                            onPressStarThree={() => onPressStarScreen("grammar")}
+                        />
+                    </View>
+
+                </ScrollView>
                 <View style={styles.styleFooter}>
                     <FooterAppHeader
                         onPressGoBack={onPressGoBack}

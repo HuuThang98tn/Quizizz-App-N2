@@ -39,10 +39,10 @@ const ShowModalTimer = (props: Props) => {
                         <View style={styles.stylesViewTextResult}>
                             <Text style={{
                                 fontSize: 30,
-                                color: colors.colors_milky,
+                                color: colors.colors_liner_gray_white,
                                 fontWeight: "700",
 
-                            }}> 宿題のタイムアウト</Text>
+                            }}>宿題のタイムアウト</Text>
                         </View>
 
                         {/* Option Quiz button */}

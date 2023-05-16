@@ -1,6 +1,6 @@
 import { SET_LOADING, ActionProps } from "../types/types";
 const initialState = {
-    isloading: true,
+    isloading: false,
 };
 
 

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import DataAlphabet from '@data/DataAlphabet'
 import { SCREEN_HEIGHTSCREEN, SCREEN_WIDTHSCREEN } from '@theme/size/sizeScree'
@@ -54,17 +54,22 @@ const BodyGrammarDetails = (props: Props) => {
     return (
 
         <View style={styles.styleContainer}>
-            <FlatList
-                data={valueParams === "alphabet" ? DataAlphabet :
-                    valueParams === "vocabulary" ? DataVocabulary :
-                        valueParams === "grammar" ? DataGrammar : null
-                }
-                renderItem={({ item, index }: any) => renderItem(item, index)}
-                keyExtractor={(item, index) => index.toString()}
-                numColumns={3}
+            <ScrollView horizontal
                 showsHorizontalScrollIndicator={false}
-                showsVerticalScrollIndicator={false}
-            />
+            >
+                <FlatList
+                    data={valueParams === "alphabet" ? DataAlphabet :
+                        valueParams === "vocabulary" ? DataVocabulary :
+                            valueParams === "grammar" ? DataGrammar : null
+                    }
+                    renderItem={({ item, index }: any) => renderItem(item, index)}
+                    keyExtractor={(item, index) => index.toString()}
+                    numColumns={3}
+                    showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
+                />
+            </ScrollView>
+
         </View>
     )
 }

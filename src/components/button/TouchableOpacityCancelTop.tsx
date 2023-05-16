@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native'
 import React from 'react'
 import colors from '@theme/colors/colors'
 import { SCREEN_HEIGHTWINDOW, SCREEN_WIDTHSCREEN } from '@theme/size/sizeScree'
+import { REQUIREIMG } from '@theme/require/RequireImage'
 
 type Props = {
     restartQuiz?: () => void
@@ -12,8 +13,14 @@ const TouchableOpacityCancelTop = (props: Props) => {
     return (
         <TouchableOpacity
             onPress={restartQuiz}
-            style={styles.stylesTouchableOpacity}>
-            <Text style={styles.stylesText}>「いいえ」</Text>
+        >
+            <ImageBackground
+                source={REQUIREIMG._buttonTouchableCancel}
+                style={styles.stylesTouchableOpacity}
+            >
+                <Text style={styles.stylesText}>いいえ</Text>
+
+            </ImageBackground>
         </TouchableOpacity>
     )
 }
@@ -22,12 +29,13 @@ export default TouchableOpacityCancelTop
 
 const styles = StyleSheet.create({
     stylesTouchableOpacity: {
-        backgroundColor: colors.colors_SandyBrown,
+        // backgroundColor: colors.colors_SandyBrown,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 6,
         paddingHorizontal: 32,
-        width: "40%",
+        width: 130,
+        height: 48,
         marginHorizontal: 10
     },
     stylesText: {

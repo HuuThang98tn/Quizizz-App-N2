@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import dataVocabularyScreen from '@data/DataVocabularyScreen'
 import { SCREEN_HEIGHTSCREEN, SCREEN_WIDTHSCREEN } from '@theme/size/sizeScree'
@@ -51,14 +51,20 @@ const BodyVocabulary = (props: Props) => {
     return (
 
         <View style={styles.styleContainer}>
-            <FlatList
-                data={dataVocabularyScreen}
-                renderItem={({ item, index }: any) => renderItem(item, index)}
-                keyExtractor={(item, index) => index.toString()}
-                numColumns={3}
+            <ScrollView
                 showsHorizontalScrollIndicator={false}
-                showsVerticalScrollIndicator={false}
-            />
+                horizontal
+            >
+                <FlatList
+                    data={dataVocabularyScreen}
+                    renderItem={({ item, index }: any) => renderItem(item, index)}
+                    keyExtractor={(item, index) => index.toString()}
+                    numColumns={3}
+                    showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
+                />
+            </ScrollView>
+
         </View>
     )
 }

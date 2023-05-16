@@ -17,10 +17,8 @@ const RenderProgressBar = (props: Props) => {
 
         <View style={{
             flexDirection: "row",
-            justifyContent: "center",
             alignItems: "center",
-            marginHorizontal: 10,
-
+            marginHorizontal: 12
         }}>
             <Text style={{
                 fontSize: 22,
@@ -29,12 +27,11 @@ const RenderProgressBar = (props: Props) => {
             }}
             > {` Lesson ${currentNumber <= 9 ? `0${currentNumber}` : currentNumber}`}</Text>
             <View style={{
-                width: '60%',
+                flex: 1,
                 height: 16,
                 borderRadius: 16,
                 backgroundColor: colors.colors_Aquamarine1,
                 marginHorizontal: 6
-
             }}>
                 <Animated.View style={[{
                     height: 16,

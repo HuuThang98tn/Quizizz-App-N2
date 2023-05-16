@@ -75,163 +75,83 @@ const dataVocabularyScreen = [
         "title": "Lesson",
         "number": "15"
     },
-]
-
-const dataVocabularyScreen_2 = [
     {
-        "id": 1,
+        "id": 16,
         "title": "Lesson",
-        "number": "01"
+        "number": "16"
     },
     {
-        "id": 2,
+        "id": 17,
         "title": "Lesson",
-        "number": "02"
+        "number": "17"
     },
     {
-        "id": 3,
+        "id": 18,
         "title": "Lesson",
-        "number": "03"
+        "number": "18"
     },
     {
-        "id": 4,
+        "id": 19,
         "title": "Lesson",
-        "number": "04"
+        "number": "19"
 
     },
     {
-        "id": 5,
+        "id": 20,
         "title": "Lesson",
-        "number": "05"
+        "number": "20"
     },
     {
-        "id": 6,
+        "id": 21,
         "title": "Lesson",
-        "number": "06"
+        "number": "21"
     },
     {
-        "id": 7,
+        "id": 22,
         "title": "Lesson",
-        "number": "07"
+        "number": "22"
     },
     {
-        "id": 8,
+        "id": 23,
         "title": "Lesson",
-        "number": "08"
+        "number": "23"
     },
     {
-        "id": 9,
+        "id": 24,
         "title": "Lesson",
-        "number": "09"
+        "number": "24"
     },
     {
-        "id": 10,
+        "id": 25,
         "title": "Lesson",
-        "number": "10"
+        "number": "25"
     },
     {
-        "id": 11,
+        "id": 26,
         "title": "Lesson",
-        "number": "11"
+        "number": "26"
     },
     {
-        "id": 12,
+        "id": 27,
         "title": "Lesson",
-        "number": "12"
+        "number": "27"
     },
     {
-        "id": 13,
+        "id": 28,
         "title": "Lesson",
-        "number": "13"
+        "number": "28"
     },
     {
-        "id": 14,
+        "id": 29,
         "title": "Lesson",
-        "number": "14"
+        "number": "29"
     },
     {
-        "id": 15,
+        "id": 30,
         "title": "Lesson",
-        "number": "15"
+        "number": "30"
     },
 ]
-const dataVocabularyScreen_3 = [
-    {
-        "id": 1,
-        "title": "Lesson",
-        "number": "01"
-    },
-    {
-        "id": 2,
-        "title": "Lesson",
-        "number": "02"
-    },
-    {
-        "id": 3,
-        "title": "Lesson",
-        "number": "03"
-    },
-    {
-        "id": 4,
-        "title": "Lesson",
-        "number": "04"
 
-    },
-    {
-        "id": 5,
-        "title": "Lesson",
-        "number": "05"
-    },
-    {
-        "id": 6,
-        "title": "Lesson",
-        "number": "06"
-    },
-    {
-        "id": 7,
-        "title": "Lesson",
-        "number": "07"
-    },
-    {
-        "id": 8,
-        "title": "Lesson",
-        "number": "08"
-    },
-    {
-        "id": 9,
-        "title": "Lesson",
-        "number": "09"
-    },
-    {
-        "id": 10,
-        "title": "Lesson",
-        "number": "10"
-    },
-    {
-        "id": 11,
-        "title": "Lesson",
-        "number": "11"
-    },
-    {
-        "id": 12,
-        "title": "Lesson",
-        "number": "12"
-    },
-    {
-        "id": 13,
-        "title": "Lesson",
-        "number": "13"
-    },
-    {
-        "id": 14,
-        "title": "Lesson",
-        "number": "14"
-    },
-    {
-        "id": 15,
-        "title": "Lesson",
-        "number": "15"
-    },
-]
 
 export default dataVocabularyScreen
