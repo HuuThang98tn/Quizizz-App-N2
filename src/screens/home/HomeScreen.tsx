@@ -1,4 +1,4 @@
-import { View, ImageBackground, Platform, ScrollView } from 'react-native'
+import { View, ImageBackground, Platform, ScrollView, } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { styles } from './styleHome';
 import { REQUIREIMG } from '@theme/require/RequireImage';
@@ -8,6 +8,8 @@ import ButtonHome from './components/ButtonHome';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { setSound } from "../../reduxs/actions/soundActions";
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { AppOpenAd, TestIds, AdEventType, InterstitialAd } from 'react-native-google-mobile-ads';
 const adUnitId = __DEV__ ? TestIds.APP_OPEN : Platform.OS === "android"
     ? "ca-app-pub-4654653142461000/5038351832"
@@ -43,7 +45,7 @@ const HomeScreen = (props: Props) => {
         dispatch<any>(setSound(!sound))
     }
     return (
-        <View style={styles.styleContainer}>
+        <SafeAreaView style={styles.styleContainer}>
 
             <ImageBackground
                 source={REQUIREIMG.img_background}
@@ -72,7 +74,7 @@ const HomeScreen = (props: Props) => {
                     </View>
                 </ScrollView>
             </ImageBackground >
-        </View >
+        </SafeAreaView >
     )
 }
 

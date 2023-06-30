@@ -23,7 +23,7 @@ end
 
 target 'QuizizzAppN2' do
   config = use_native_modules!
-  $RNGoogleMobileAdsAsStaticFramework = true
+
   # Flags change depending on the env values.
   flags = get_default_flags()
 
@@ -47,7 +47,6 @@ target 'QuizizzAppN2' do
     inherit! :complete
     # Pods for testing
   end
-
   post_install do |installer|
     react_native_post_install(
       installer,
@@ -56,5 +55,23 @@ target 'QuizizzAppN2' do
       :mac_catalyst_enabled => false
     )
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings["CC"] = "clang"
+        config.build_settings["LD"] = "clang"
+        config.build_settings["CXX"] = "clang++"
+        config.build_settings["LDPLUSPLUS"] = "clang++"
+      end
+    end
+
+    # quiet non-module warnings - only interested in google-mobile-ads warnings
+    installer.pods_project.targets.each do |target|
+      if !target.name.include? "react-native-google-mobile-ads"
+        target.build_configurations.each do |config|
+          config.build_settings["GCC_WARN_INHIBIT_ALL_WARNINGS"] = "YES"
+        end
+      end
+    end
   end
 end
