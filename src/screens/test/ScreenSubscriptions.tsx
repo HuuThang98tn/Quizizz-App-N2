@@ -27,8 +27,8 @@ const ScreenSubscriptions = (props: Props) => {
         connected,
         subscriptions,
         getSubscriptions,
-        currentPurchase,
         finishTransaction,
+        currentPurchase,
     } = useIAP();
 
     const [ownedSubscriptions, setOwnedSubscriptions] = useState<string[]>([]);
@@ -36,11 +36,16 @@ const ScreenSubscriptions = (props: Props) => {
 
     const handleGetSubscriptions = async () => {
         try {
-            await getSubscriptions({ skus: ['full_app_access'] });
+            await getSubscriptions({ skus: ['does_not_contain_ads'] });
+            console.log("subscriptions", subscriptions);
+
         } catch (error) {
+            console.log("error", error);
+
             errorLog({ message: 'handleGetSubscriptions', error });
         }
     };
+
 
 
     const handleBuySubscription = async (
@@ -70,6 +75,7 @@ const ScreenSubscriptions = (props: Props) => {
 
     useEffect(() => {
         const checkCurrentPurchase = async () => {
+            console.log('currentPurchasecurrentPurchasecurrentPurchase', currentPurchase);
             try {
                 if (currentPurchase?.productId) {
                     await finishTransaction({
@@ -98,8 +104,11 @@ const ScreenSubscriptions = (props: Props) => {
         <SafeAreaView style={styles.container}>
             {subscriptions.map((subscription, index) => {
                 const owned = ownedSubscriptions.find((pId) => {
+
                     return pId === subscription.productId;
                 });
+                console.log("ownedownedowned", owned);
+
                 return (
                     <Row
                         key={subscription.productId}
@@ -125,7 +134,7 @@ const ScreenSubscriptions = (props: Props) => {
                             'subscriptionOfferDetails' in subscription &&
                             subscription?.subscriptionOfferDetails?.map((offer) => (
                                 <Button
-                                    title={`Subscribe ${offer.pricingPhases.pricingPhaseList
+                                    title={`Su1111bscribe ${offer.pricingPhases.pricingPhaseList
                                         .map((ppl) => ppl.billingPeriod)
                                         .join(',')}`}
                                     onPress={() => {

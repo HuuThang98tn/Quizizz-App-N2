@@ -31,6 +31,9 @@ export const REQUIREIMG = {
 
     ic_ring_correct: require("../../assets/imgs/ic_ring_correct.png"),
     ic_xwrong: require("../../assets/imgs/ic_xwrong.png"),
+    in_app_button: require("../../assets/imgs/in_app_button.png"),
+    check_ic: require("../../assets/imgs/check_ic.png"),
+    src_assets_imgs_ic_xwrong_gr: require("../../assets/imgs/src_assets_imgs_ic_xwrong_gr.png"),
 
 
 }
