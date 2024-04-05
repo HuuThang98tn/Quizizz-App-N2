@@ -7,7 +7,7 @@ import SplashScreen from '@screens/splash/SplashScreen';
 import LoadingModal from '@components/modal/LoadingModal';
 import Sound from 'react-native-sound';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppOpenAd, TestIds, AdEventType, InterstitialAd } from 'react-native-google-mobile-ads';
+// import { AppOpenAd, TestIds, AdEventType, InterstitialAd } from 'react-native-google-mobile-ads';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type Props = {}

@@ -2,8 +2,8 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:QuizizzAppN2.xcodeproj">
-   </FileRef>
+        location="group:funic.app.n2.xcodeproj">
+    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>

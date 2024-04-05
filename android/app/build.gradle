@@ -93,13 +93,13 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.quizizzappn2'
+    namespace 'com.funic.app.n2'
     defaultConfig {
-        applicationId 'com.quizizzappn2'
+        applicationId 'com.funic.app.n2'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 13
-        versionName '2.0'
+        versionCode 16
+        versionName '2.3'
         missingDimensionStrategy 'store', 'play'
     }
     splits {

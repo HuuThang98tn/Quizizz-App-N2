@@ -14,7 +14,7 @@ import { ListQuestionA, ListQuestionB, ListQuestionC, ListQuestionD, ListQuestio
 import { ListDataVocabularyA, ListDataVocabularyB, ListDataVocabularyC, ListDataVocabularyD, ListDataVocabularyE, ListDataVocabularyF, ListDataVocabularyG } from '@data/vocabulary/ListDataVocabulary';
 import { ListDataGrammarA, ListDataGrammarB, ListDataGrammarC, ListDataGrammarD, ListDataGrammarE, ListDataGrammarF, ListDataGrammarG } from '@data/grammar/ListDataGrammar';
 import { useSelector } from 'react-redux';
-import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+// import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
 type Props = {
     navigation?: any
@@ -189,8 +189,8 @@ const BodyQuestion = (props: Props) => {
     }, [currentNumber])
 
 
-    const adUnitId = __DEV__ ? TestIds.BANNER : Platform.OS === "android"
-        ? "ca-app-pub-4654653142461000/7616413717" : "ca-app-pub-4654653142461000/2943026751";
+    // const adUnitId = __DEV__ ? TestIds.BANNER : Platform.OS === "android"
+    //     ? "ca-app-pub-4654653142461000/7616413717" : "ca-app-pub-4654653142461000/2943026751";
     const progressAnim = progress.interpolate({
         inputRange: [0, allQuestions?.length],
         outputRange: ['0%', '100%'],
@@ -427,13 +427,13 @@ const BodyQuestion = (props: Props) => {
                 left: 0,
                 right: 0
             }}>
-                <BannerAd
+                {/* <BannerAd
                     unitId={adUnitId}
                     size={BannerAdSize.FULL_BANNER}
                     requestOptions={{
                         requestNonPersonalizedAdsOnly: true,
                     }}
-                />
+                /> */}
             </View>
             <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
                 <FooterAppHeader

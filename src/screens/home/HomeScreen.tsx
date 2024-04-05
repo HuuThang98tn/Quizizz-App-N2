@@ -42,7 +42,11 @@ const adUnitId = __DEV__
         : 'ca-app-pub-4654653142461000/2943026751';
 type Props = {};
 const HomeScreen = (props: Props) => {
-    const { connected, subscriptions, getSubscriptions, currentPurchase, finishTransaction, purchaseHistory, getPurchaseHistory, availablePurchases }: any = useIAP();
+    const { connected,
+        subscriptions,
+        getSubscriptions,
+        currentPurchase, finishTransaction, purchaseHistory,
+        getPurchaseHistory, availablePurchases }: any = useIAP();
     const [sound, setSounds] = useState<boolean | any>(true);
     const [isVisible, setIsVisible] = useState<boolean | any>(false);
     const navigation: any = useNavigation();
@@ -84,50 +88,50 @@ const HomeScreen = (props: Props) => {
     };
 
     //In-app
-    useEffect(() => {
-        handleGetSubscriptions();
-    }, [isCheckData]);
+    // useEffect(() => {
+    //     handleGetSubscriptions();
+    // }, [isCheckData]);
 
-    useEffect(() => {
-        checkPurchasedYearlyPackage();
-    }, [currentPurchase, finishTransaction]);
+    // useEffect(() => {
+    //     checkPurchasedYearlyPackage();
+    // }, [currentPurchase, finishTransaction]);
 
-    useEffect(function () {
-        initConnection().then((res) => {
-            setIsCheckData(true);
-        }
-        ).catch(error => console.log(error));
+    // useEffect(function () {
+    //     initConnection().then((res) => {
+    //         setIsCheckData(true);
+    //     }
+    //     ).catch(error => console.log(error));
 
-        return (() => {
-            endConnection();
-        });
-    }, []);
+    //     return (() => {
+    //         endConnection();
+    //     });
+    // }, []);
 
 
-    useEffect(() => {
-        subscriptions?.map((subscription: any, index: any) => {
-            setGetMoney(subscription?.subscriptionOfferDetails[0]?.pricingPhases?.pricingPhaseList[0]?.formattedPrice);
-            setProduct_id(subscriptions[0]?.productId);
+    // useEffect(() => {
+    //     subscriptions?.map((subscription: any, index: any) => {
+    //         setGetMoney(subscription?.subscriptionOfferDetails[0]?.pricingPhases?.pricingPhaseList[0]?.formattedPrice);
+    //         setProduct_id(subscriptions[0]?.productId);
 
-            purchaseHistory.map((item: any, index: any) => {
-                // setPurchaseHistoryID(item.productId);
-                const check_ID = purchaseHistory?.includes(item.productId);
-                if (check_ID) {
-                    setIsVisible(false);
-                    console.log("false");
-                } else {
-                    setIsVisible(true);
-                    console.log("true");
-                }
-                if (!check_ID && isPlay && 'subscriptionOfferDetails' in subscription) {
-                    subscription?.subscriptionOfferDetails?.map((offer: any) => {
-                        setOfferToken(offer?.offerToken);
-                    });
-                }
-            });
-        });
+    //         purchaseHistory.map((item: any, index: any) => {
+    //             // setPurchaseHistoryID(item.productId);
+    //             const check_ID = purchaseHistory?.includes(item.productId);
+    //             if (check_ID) {
+    //                 setIsVisible(false);
+    //                 console.log("false");
+    //             } else {
+    //                 setIsVisible(true);
+    //                 console.log("true");
+    //             }
+    //             if (!check_ID && isPlay && 'subscriptionOfferDetails' in subscription) {
+    //                 subscription?.subscriptionOfferDetails?.map((offer: any) => {
+    //                     setOfferToken(offer?.offerToken);
+    //                 });
+    //             }
+    //         });
+    //     });
 
-    }, [subscriptions]);
+    // }, [subscriptions]);
 
     purchaseHistory.map((item: any, index: any) => {
 

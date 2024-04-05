@@ -1,4 +1,4 @@
-package com.quizizzappn2;
+package com.funic.app.n2;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

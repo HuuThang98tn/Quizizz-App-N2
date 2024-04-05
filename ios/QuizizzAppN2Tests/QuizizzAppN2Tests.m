@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface QuizizzAppN2Tests : XCTestCase
+@interface funic.app.n2Tests : XCTestCase
 
 @end
 
-@implementation QuizizzAppN2Tests
+@implementation funic.app.n2Tests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

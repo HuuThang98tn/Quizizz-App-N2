@@ -1,4 +1,4 @@
-package com.quizizzappn2;
+package com.funic.app.n2;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "QuizizzAppN2";
+    return "funic.app.n2";
   }
 
   /**
